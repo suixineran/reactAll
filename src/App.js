@@ -1,8 +1,8 @@
 import React , { Component }from 'react'
 import 'antd/dist/antd.css'
 import store from './store'
-import {changeInputAction, addItemAction, deleteItemAction} from './store/actionCreate'
-import AppUI from "./AppUI"
+import {  changeInputAction, addItemAction, deleteItemAction, getMyListAction, } from './store/actionCreate'
+import AppUI from "./store/AppUI"
 
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
         super(props)
         this.state = store.getState()
         store.subscribe(this.storeChange)
-        this.deleteItem = this.deleteItem.bind(this)
+        // this.deleteItem = this.deleteItem.bind(this)
 
     }
 
@@ -28,6 +28,13 @@ class App extends Component {
             </div>
         )
     }
+
+    componentDidMount(){
+        const action =getMyListAction()
+        store.dispatch(action)
+        console.log(action)
+    }
+
     storeChange = () => {
         this.setState(store.getState())
     }
@@ -42,8 +49,9 @@ class App extends Component {
         store.dispatch(action)
     }
 
-    deleteItem(index)  {
-        const action = deleteItemAction()
+    deleteItem = (index) => {
+        console.log(index)
+        const action = deleteItemAction(index)
         store.dispatch(action)
     }
 }

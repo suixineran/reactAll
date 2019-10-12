@@ -6,8 +6,8 @@ function PageDetail(props) {
         <div>
             <div> 我是PageDetail</div>
             <h2>{props.match.path}</h2>
-            <h2>{props.match.url}</h2>
-            <h2>{props.match.params.id}</h2>
+            {/*<h2>{props.match.url}</h2>*/}
+            {/*<h2>{props.match.params.id}</h2>*/}
         </div>
     )
 }
